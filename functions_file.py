@@ -5,7 +5,8 @@ from tkinterdnd2 import TkinterDnD
 import os
 import tkinter as tk
 
-
+########################################################3
+# this function is used to display the courses in a listbox and select the courses
 def display_and_select(items):
     # Create a new tkinter window
     root = Tk()
@@ -54,7 +55,10 @@ def display_and_select(items):
 
 ##############################################################################################################
 
-
+# this function is used to check the conflicts and write the selected courses to a new file
+#if there is a conflict it will return false write the conflicts to a file named conflicts.xlsx
+# if there is no conflict it will return true wirte the selected courses to a new file named output.xlsx
+#in both cases there will be an otput file
 
 def check_conflicts_and_write(course_names,rows_header,  input_file="wow.xls", output_file="output.xlsx", conflicts_file="conflicts.xlsx"):
     # Load the xls file data into a pandas DataFrame
@@ -79,13 +83,15 @@ def check_conflicts_and_write(course_names,rows_header,  input_file="wow.xls", o
                 # If course i starts before course j ends and ends after course j starts, there is a conflict
                 if course_i[2] < course_j[3] and course_i[3] > course_j[2]:
                     # Add a description of the conflict to the conflicts list
-                    conflicts.append({"Conflict": f"{course_i[6]} conflicts with {course_j[6]} on {name[0]} semester, {name[1]} day."})
+                    conflicts.append({"Conflict": f"{course_i[6]} מתנגש עם {course_j[6]} בסמסטר {name[0]} ,ביום {name[1]}."})
 
     # Write the conflicts to a file
     if conflicts:
+
         conflicts_df = pd.DataFrame(conflicts)
+        
         conflicts_df.to_excel(conflicts_file, index=False, engine='openpyxl')
-        print("There are conflicts in your selected courses. Check the file", conflicts_file)
+        print("\nThere are conflicts in your selected courses. Check the file", conflicts_file)
         return False
     else:
         # No conflict exists. Write the selected courses to a new .xlsx file
@@ -121,3 +127,5 @@ def drag_and_drop():
     window.mainloop()
 
     return filename_var.get()  # Return the filename
+
+##############################################################################################################
