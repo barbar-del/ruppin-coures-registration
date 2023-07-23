@@ -89,7 +89,6 @@ def check_conflicts_and_write(course_names,rows_header,  input_file="wow.xls", o
     if conflicts:
 
         conflicts_df = pd.DataFrame(conflicts)
-        
         conflicts_df.to_excel(conflicts_file, index=False, engine='openpyxl')
         print("\nThere are conflicts in your selected courses. Check the file", conflicts_file)
         return False
@@ -109,6 +108,7 @@ def check_conflicts_and_write(course_names,rows_header,  input_file="wow.xls", o
 def drag_and_drop():
     def drop(event):
         file_path = event.data
+        print
         filename_var.set(os.path.basename(file_path))  # Update the filename_var
         window.destroy()  # Close the window after getting the file
 
