@@ -15,8 +15,10 @@ def main():
     semesterlist = sheet.col_values(0)[1:]
     daylist = sheet.col_values(1)[1:]
     courselist = sheet.col_values(6)[1:]
+    startHourlist = sheet.col_values(2)[1:]
+    endHourlist = sheet.col_values(3)[1:]
 
-    items = list(zip(courselist, semesterlist, daylist))
+    items = list(zip(courselist, semesterlist, daylist, startHourlist, endHourlist))
 
     print("header row:", header_row)
 

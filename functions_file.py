@@ -20,7 +20,7 @@ def display_and_select(items):
     scrollbar.config(command=listbox.yview)
 
     for item in items:
-        item_str = f"      שם הקורס:  {item[0]}, סמסטר:  {item[1]}, יום:  {item[2]}       "
+        item_str = f" ||   שם הקורס:  {item[0]} || סמסטר:  {item[1]} || יום:  {item[2]} || שעת התחלה: {item[3]} || שעת סיום:  {item[4]} ||      "
         listbox.insert('end', item_str)
 
     selected_indices = []
